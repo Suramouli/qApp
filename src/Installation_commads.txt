@@ -1,0 +1,148 @@
+How to create your own qApp with qubic lite
+
+
+Download the latest qlri jar file from the official release page:
+
+
+
+
+Put it in a directory like /qlri and run it with:
+
+$ java -jar qlri-[VERSION].jar -api -h localhost
+Note:
+The Java JDK must be installed! You can download it from here: 
+
+Visit  in your browser to use the qubic lite web interface.
+
+
+
+Now we set up a new qApp directory. Go to your development directory and create a new directory and go into it:
+
+$ mkdir my-qapp && cd my-qapp
+You can name your app like you want, just replace the both "my-qapp" parameter.
+
+
+
+Now, let's create an index file:
+
+$ touch index.html
+
+
+Open it with your editor you like. I use . 
+
+$ atom .
+This opens the whole directory in the editor with the index.html inside.
+
+
+
+Now add a headline in the index.html file to print something on the screen.
+
+<h1>Hello World, qubic lite is awesome!</h1>
+
+
+Create a meta.json file which will provide information about your qapp.
+
+$ touch meta.json
+
+
+Add this JSON object to the meta.json file and insert your data,
+
+{
+  "title": "my-qapp",
+  "description": "My first decentral application",
+  "url": "www.my-qapp.com",
+  "version": "ql-0.4.1",
+  "license": "Copyright ©2018 < your name > (MIT)"
+}
+
+
+The qlri node needs a zip file, which contains the web content and the meta.json file. Let's create a helper for it! Let's include the node package manager (npm).
+
+$ npm init
+
+
+After you fill all things, it creates a package.json file like this: 
+
+{
+  "name": "my-qapp",
+  "version": "0.0.1",
+  "description": "My first decetral application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<your name>",
+  "license": "MIT"
+}
+
+
+For our helper, we add a simple script entry, which generates a zip file. Add the "zip" line to your package.json file (and don't forget the comma behind the "test"-line).
+
+ "scripts": 
+  {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "mkdir my-qapp && cp meta.json my-qapp/meta.json && cp index.html my-qapp/index.html && zip -r -X qapp.zip my-qapp && rm -rf my-qapp"
+  },
+This creates a new directory, copies the index.html and the meta.json file in and zip it. After that, it deletes the temporary dots folder. 
+
+
+
+Run the zip command with:
+
+$ npm run zip
+
+
+We need a way to provide the zip file to the qlri. A nice way is a simple web server. Run this to install a web server globally.
+
+$ npm install http-server -g
+
+
+Now, you can make the whole directory accessible from the browser. 
+
+$ http-server . -a localhost
+You can visit  to see your page.
+
+
+
+Go to your Qubic Lite Web interface to the qApps tab. 
+
+
+
+
+Paste in the URL () and click install. You should see something like this: 
+
+
+
+
+
+
+
+That's all! You did create your first small qApp. Congratulations!
+
+
+
+The last step for this tutorial is to publish your awesome application to GitHub, so you have a prepared setup and you can share a link for your application. 
+
+
+
+$ git init
+
+
+$ git add .
+
+
+$ git commit -m "Initial commit"
+
+
+Go to GitHub and create a new repository, then add origin and push.
+
+
+$ git remote add origin https://github.com/<your-username>/<your-reponame>.git
+
+
+And upload it to GitHub:
+
+$ git push -u origin master
+
+ 
+
