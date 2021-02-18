@@ -1,0 +1,14 @@
+{
+  "name": "my-qapp",
+  "version": "0.0.1",
+  "description": "my first decetral application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Erorr no test specified\" && exit 1",
+    "zip": "mkdir my-qapp1 && cp meta.json my-qapp1/meta.json && cp index.html my-qapp1/index.html && zip -r -X qapp1.zip my-qapp1 && rm -rf my-qapp"
+
+
+  },
+  "author": "sandeep",
+  "license": "ISC"
+}

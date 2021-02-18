@@ -1,0 +1,7 @@
+{
+	  "title": "my-qapp",
+	    "description": "My first decentral application",
+	      "url": "www.my-qapp.com",
+	        "version": "ql-0.4.1",
+		  "license": "Copyright ©2018 < your name > (MIT)"
+}
